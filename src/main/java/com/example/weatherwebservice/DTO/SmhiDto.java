@@ -11,7 +11,10 @@ public class SmhiDto extends Dto {
     public SmhiDto() {
 
         weatherWebservice=getInfoFromSmhi();
-        temperature= weatherWebservice.getTimeSeries().get(0).getParameters().get(10).getValues().get(0);
+        temperature= weatherWebservice.getTimeSeries().get(25).getParameters().get(10).getValues().get(0);
+        humidity = weatherWebservice.getTimeSeries().get(25).getParameters().get(15).getValues().get(0);
+        time = weatherWebservice.getTimeSeries().get(25).getValidTime();
+
 
     }
     public WeatherWebservice getInfoFromSmhi(){

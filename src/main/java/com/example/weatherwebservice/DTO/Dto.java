@@ -5,14 +5,14 @@ import java.util.List;
 abstract public class Dto {
 
     Integer temperature;
-    double humidity;
+    Integer humidity;
     String time;
     String location;
 
     public Dto() {
     }
 
-    public Dto(Integer temperature, double humidity, String time, String location) {
+    public Dto(Integer temperature, Integer humidity, String time, String location) {
         this.temperature = temperature;
         this.humidity = humidity;
         this.time = time;
@@ -27,11 +27,11 @@ abstract public class Dto {
         this.temperature = temperature;
     }
 
-    public double getHumidity() {
+    public Integer getHumidity() {
         return humidity;
     }
 
-    public void setHumidity(double humidity) {
+    public void setHumidity(Integer humidity) {
         this.humidity = humidity;
     }
 

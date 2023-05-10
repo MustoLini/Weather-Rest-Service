@@ -1,14 +1,13 @@
-package com.example.weatherwebservice.Controller;
+package com.example.weatherwebservice.Service;
 
 import com.example.weatherwebservice.DTO.MetDto;
 import com.example.weatherwebservice.DTO.SmhiDto;
 import com.example.weatherwebservice.DTO.WeatherWebsiteDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RestController;
 
 @Service
-public class WeatherWebsiteController {
+public class WeatherWebsiteService {
     @Autowired
     MetDto metDto;
     @Autowired
@@ -25,10 +24,10 @@ public class WeatherWebsiteController {
     public String bestWeatherSource() {
         WeatherWebsiteDto weather = getTheBestWeather();
         if(weather.getClass().equals(SmhiDto.class)){
-            return SmhiDto.class.toString();
+            return "SMHI";
         }
         else if(weather.getClass().equals(MetDto.class)){
-            return MetDto.class.toString();
+            return "MET";
         }
         else{
             return "";

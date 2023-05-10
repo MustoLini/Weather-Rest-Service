@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "geometry",
     "properties"
 })
-public class WeatherWebservice {
+public class MetWeatherWebservice {
 
     @JsonProperty("type")
     private String type;

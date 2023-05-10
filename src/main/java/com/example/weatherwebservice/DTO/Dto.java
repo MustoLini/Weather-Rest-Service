@@ -7,16 +7,16 @@ abstract public class Dto {
     Integer temperature;
     Integer humidity;
     String time;
-    String location;
+
 
     public Dto() {
     }
 
-    public Dto(Integer temperature, Integer humidity, String time, String location) {
+    public Dto(Integer temperature, Integer humidity, String time) {
         this.temperature = temperature;
         this.humidity = humidity;
         this.time = time;
-        this.location = location;
+
     }
 
     public Integer getTemperature() {
@@ -43,11 +43,4 @@ abstract public class Dto {
         this.time = time;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
 }

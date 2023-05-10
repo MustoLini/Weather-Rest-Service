@@ -14,7 +14,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
     "geometry",
     "timeSeries"
 })
-public class WeatherWebservice {
+public class SmhiWeatherWebservice {
 
     @JsonProperty("approvedTime")
     private String approvedTime;

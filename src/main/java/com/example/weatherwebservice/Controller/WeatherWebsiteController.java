@@ -14,7 +14,7 @@ public class WeatherWebsiteController {
     @Autowired
     SmhiDto smhiDto;
 
-    WeatherWebsiteDto getTheBestWeather() {
+    public WeatherWebsiteDto getTheBestWeather() {
         if (metDto.getTemperature() > smhiDto.getTemperature()) {
             return metDto;
         } else {
@@ -22,4 +22,17 @@ public class WeatherWebsiteController {
         }
     }
 
+    public String bestWeatherSource() {
+        WeatherWebsiteDto weather = getTheBestWeather();
+        if(weather.getClass().equals(SmhiDto.class)){
+            return SmhiDto.class.toString();
+        }
+        else if(weather.getClass().equals(MetDto.class)){
+            return MetDto.class.toString();
+        }
+        else{
+            return "";
+        }
+
+    }
 }

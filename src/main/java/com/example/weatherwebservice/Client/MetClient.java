@@ -1,15 +1,15 @@
-package com.example.weatherwebservice.DTO;
+package com.example.weatherwebservice.Client;
 
 import com.example.weatherwebservice.MET.MetWeatherWebservice;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 @Service
-public class MetDto extends WeatherWebsiteDto {
+public class MetClient extends WeatherWebsiteClient {
     WebClient client = WebClient.create();
     MetWeatherWebservice metWeatherWebservice;
 
-    public MetDto() {
+    public MetClient() {
         metWeatherWebservice= getInfoFromMet();
         temperature = getNextDayTemperature();
         humidity = getNextDayHumidity();

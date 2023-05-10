@@ -8,7 +8,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 @Configuration
-public class Client implements CommandLineRunner {
+public class Runnable implements CommandLineRunner {
     WebClient client = WebClient.create();
 
     public SmhiWeatherWebservice getSmhi() {

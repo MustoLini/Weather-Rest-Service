@@ -1,16 +1,16 @@
-package com.example.weatherwebservice.DTO;
+package com.example.weatherwebservice.Client;
 
-abstract public class WeatherWebsiteDto {
+abstract public class WeatherWebsiteClient {
 
     Integer temperature;
     Integer humidity;
     String time;
 
 
-    public WeatherWebsiteDto() {
+    public WeatherWebsiteClient() {
     }
 
-    public WeatherWebsiteDto(Integer temperature, Integer humidity, String time) {
+    public WeatherWebsiteClient(Integer temperature, Integer humidity, String time) {
         this.temperature = temperature;
         this.humidity = humidity;
         this.time = time;

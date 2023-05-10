@@ -1,32 +1,32 @@
 package com.example.weatherwebservice.Service;
 
-import com.example.weatherwebservice.DTO.MetDto;
-import com.example.weatherwebservice.DTO.SmhiDto;
-import com.example.weatherwebservice.DTO.WeatherWebsiteDto;
+import com.example.weatherwebservice.Client.MetClient;
+import com.example.weatherwebservice.Client.SmhiClient;
+import com.example.weatherwebservice.Client.WeatherWebsiteClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class WeatherWebsiteService {
     @Autowired
-    MetDto metDto;
+    MetClient metClient;
     @Autowired
-    SmhiDto smhiDto;
+    SmhiClient smhiClient;
 
-    public WeatherWebsiteDto getTheBestWeather() {
-        if (metDto.getTemperature() > smhiDto.getTemperature()) {
-            return metDto;
+    public WeatherWebsiteClient getTheBestWeather() {
+        if (metClient.getTemperature() > smhiClient.getTemperature()) {
+            return metClient;
         } else {
-            return smhiDto;
+            return smhiClient;
         }
     }
 
     public String bestWeatherSource() {
-        WeatherWebsiteDto weather = getTheBestWeather();
-        if(weather.getClass().equals(SmhiDto.class)){
+        WeatherWebsiteClient weather = getTheBestWeather();
+        if(weather.getClass().equals(SmhiClient.class)){
             return "SMHI";
         }
-        else if(weather.getClass().equals(MetDto.class)){
+        else if(weather.getClass().equals(MetClient.class)){
             return "MET";
         }
         else{

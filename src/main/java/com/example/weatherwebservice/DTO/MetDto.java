@@ -24,14 +24,14 @@ public class MetDto extends Dto {
         return mono.block();
     }
     Integer getNextDayTemperature() {
-        return 0;
+        return metWeatherWebservice.getProperties().getTimeseries().get(27).getData().getInstant().getDetails().getAirTemperature().intValue();
     }
 
     Integer getNextDayHumidity() {
-        return 0;
+        return metWeatherWebservice.getProperties().getTimeseries().get(27).getData().getInstant().getDetails().getRelativeHumidity().intValue();
     }
 
     String getNextDayTime() {
-        return "";
+        return metWeatherWebservice.getProperties().getTimeseries().get(27).getTime();
     }
 }

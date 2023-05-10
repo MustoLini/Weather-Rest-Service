@@ -1,18 +1,16 @@
 package com.example.weatherwebservice.DTO;
 
-import java.util.List;
-
-abstract public class Dto {
+abstract public class WeatherWebsiteDto {
 
     Integer temperature;
     Integer humidity;
     String time;
 
 
-    public Dto() {
+    public WeatherWebsiteDto() {
     }
 
-    public Dto(Integer temperature, Integer humidity, String time) {
+    public WeatherWebsiteDto(Integer temperature, Integer humidity, String time) {
         this.temperature = temperature;
         this.humidity = humidity;
         this.time = time;

@@ -1,7 +1,5 @@
 package com.example.weatherwebservice.Entities;
 
-import org.springframework.cglib.core.Local;
-
 import java.time.LocalDateTime;
 
 abstract public class WeatherWebsiteEntity {

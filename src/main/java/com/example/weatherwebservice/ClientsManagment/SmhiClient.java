@@ -1,6 +1,5 @@
-package com.example.weatherwebservice.Client;
+package com.example.weatherwebservice.ClientsManagment;
 
-import com.example.weatherwebservice.DTO.WeatherWebsiteDTO;
 import com.example.weatherwebservice.SMHI.SmhiWeatherWebservice;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;

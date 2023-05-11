@@ -7,9 +7,11 @@
 <body>
 <h1>Bästa vädret i Liljeholmen</h1>
 
-<p>Temperatur: <span th:text="${bestWeather.getTemperature()}" /> grader.</p>
-<p>Luftfuktighet: <span th:text="${bestWeather.getHumidity()}" /> %. </p>
+<p th:text="${bestWeather.getTime().toString()}"></p>
+<h3>Bästa vädret kommer ifrån <span th:text="${source}"></span></h3>
+<p><strong>Temperatur: </strong><span th:text="${bestWeather.getTemperature()}" /> grader.</p>
+<p><strong>Luftfuktighet: </strong><span th:text="${bestWeather.getHumidity()}" /> %. </p>
 <br />
-<p>Vädret kommer ifrån <span th:text="${source}"></span></p>
+
 </body>
 </html>

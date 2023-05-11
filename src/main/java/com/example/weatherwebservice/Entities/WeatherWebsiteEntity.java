@@ -1,15 +1,19 @@
-package com.example.weatherwebservice.DTO;
+package com.example.weatherwebservice.Entities;
 
-abstract public class WeatherWebsiteDTO {
+import org.springframework.cglib.core.Local;
+
+import java.time.LocalDateTime;
+
+abstract public class WeatherWebsiteEntity {
     public Integer temperature;
     public Integer humidity;
-    public String time;
+    public LocalDateTime time;
 
 
-    public WeatherWebsiteDTO() {
+    public WeatherWebsiteEntity() {
     }
 
-    public WeatherWebsiteDTO(Integer temperature, Integer humidity, String time) {
+    public WeatherWebsiteEntity(Integer temperature, Integer humidity, LocalDateTime time) {
         this.temperature = temperature;
         this.humidity = humidity;
         this.time = time;
@@ -32,11 +36,11 @@ abstract public class WeatherWebsiteDTO {
         this.humidity = humidity;
     }
 
-    public String getTime() {
+    public LocalDateTime getTime() {
         return time;
     }
 
-    public void setTime(String time) {
+    public void setTime(LocalDateTime time) {
         this.time = time;
     }
 }

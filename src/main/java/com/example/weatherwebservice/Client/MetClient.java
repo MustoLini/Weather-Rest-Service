@@ -1,19 +1,17 @@
 package com.example.weatherwebservice.Client;
 
+import com.example.weatherwebservice.DTO.WeatherWebsiteDTO;
 import com.example.weatherwebservice.MET.MetWeatherWebservice;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 @Service
-public class MetClient extends WeatherWebsiteClient {
+public class MetClient {
     WebClient client = WebClient.create();
-    MetWeatherWebservice metWeatherWebservice;
+    public MetWeatherWebservice metWeatherWebservice;
 
     public MetClient() {
         metWeatherWebservice= getInfoFromMet();
-        temperature = getNextDayTemperature();
-        humidity = getNextDayHumidity();
-        time = getNextDayTime();
     }
     public MetWeatherWebservice getInfoFromMet() {
         Mono<MetWeatherWebservice> mono = client
@@ -22,16 +20,5 @@ public class MetClient extends WeatherWebsiteClient {
                 .retrieve()
                 .bodyToMono(MetWeatherWebservice.class);
         return mono.block();
-    }
-    Integer getNextDayTemperature() {
-        return metWeatherWebservice.getProperties().getTimeseries().get(27).getData().getInstant().getDetails().getAirTemperature().intValue();
-    }
-
-    Integer getNextDayHumidity() {
-        return metWeatherWebservice.getProperties().getTimeseries().get(27).getData().getInstant().getDetails().getRelativeHumidity().intValue();
-    }
-
-    String getNextDayTime() {
-        return metWeatherWebservice.getProperties().getTimeseries().get(27).getTime();
     }
 }

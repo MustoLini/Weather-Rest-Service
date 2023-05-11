@@ -1,20 +1,17 @@
 package com.example.weatherwebservice.Client;
 
+import com.example.weatherwebservice.DTO.WeatherWebsiteDTO;
 import com.example.weatherwebservice.SMHI.SmhiWeatherWebservice;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 @Service
-public class SmhiClient extends WeatherWebsiteClient {
-    WebClient client = WebClient.create();
-    SmhiWeatherWebservice weatherWebservice;
+public class SmhiClient {
+    public WebClient client = WebClient.create();
+    public SmhiWeatherWebservice weatherWebservice;
 
     public SmhiClient() {
-
         weatherWebservice = getInfoFromSmhi();
-        temperature = getNextDayTemperature();
-        humidity = getNextDayHumidity();
-        time = getNextDayTime();
     }
 
     public SmhiWeatherWebservice getInfoFromSmhi() {
@@ -26,16 +23,5 @@ public class SmhiClient extends WeatherWebsiteClient {
         return mono.block();
     }
 
-    Integer getNextDayTemperature() {
-        return weatherWebservice.getTimeSeries().get(25).getParameters().get(10).getValues().get(0);
-    }
-
-    Integer getNextDayHumidity() {
-        return weatherWebservice.getTimeSeries().get(25).getParameters().get(15).getValues().get(0);
-    }
-
-    String getNextDayTime() {
-        return weatherWebservice.getTimeSeries().get(25).getValidTime();
-    }
 
 }

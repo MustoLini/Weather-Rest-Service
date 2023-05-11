@@ -2,7 +2,6 @@ package com.example.weatherwebservice.Entities;
 
 import com.example.weatherwebservice.ClientsManagment.MetClient;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -10,6 +9,7 @@ import java.time.format.DateTimeFormatter;
 @Component
 public class MetEntity extends WeatherWebsiteEntity {
     MetClient metClient;
+
     public MetEntity() {
         metClient = new MetClient();
         temperature = getNextDayTemperature();
@@ -18,15 +18,20 @@ public class MetEntity extends WeatherWebsiteEntity {
         weatherSource = "MET";
     }
 
-    Integer getNextDayTemperature() {
+
+    public LocalDateTime modularTime(Integer hours) {
+        return LocalDateTime.parse(metClient.metWeatherWebservice.getProperties().getTimeseries().get(hours).getTime(), DateTimeFormatter.ISO_DATE_TIME);
+    }
+
+    public Integer getNextDayTemperature() {
         return metClient.metWeatherWebservice.getProperties().getTimeseries().get(27).getData().getInstant().getDetails().getAirTemperature().intValue();
     }
 
-    Integer getNextDayHumidity() {
+    public Integer getNextDayHumidity() {
         return metClient.metWeatherWebservice.getProperties().getTimeseries().get(27).getData().getInstant().getDetails().getRelativeHumidity().intValue();
     }
 
-    LocalDateTime getNextDayTime() {
+    public LocalDateTime getNextDayTime() {
         return LocalDateTime.parse(metClient.metWeatherWebservice.getProperties().getTimeseries().get(27).getTime(), DateTimeFormatter.ISO_DATE_TIME);
     }
 }

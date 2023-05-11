@@ -17,6 +17,7 @@ public class SmhiEntity extends WeatherWebsiteEntity {
         temperature = getNextDayTemperature();
         humidity = getNextDayHumidity();
         time = getNextDayTime();
+        weatherSource = "SMHI";
     }
 
     Integer getNextDayTemperature() {

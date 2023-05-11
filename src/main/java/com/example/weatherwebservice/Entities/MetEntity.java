@@ -15,6 +15,7 @@ public class MetEntity extends WeatherWebsiteEntity {
         temperature = getNextDayTemperature();
         humidity = getNextDayHumidity();
         time = getNextDayTime();
+        weatherSource = "MET";
     }
 
     Integer getNextDayTemperature() {

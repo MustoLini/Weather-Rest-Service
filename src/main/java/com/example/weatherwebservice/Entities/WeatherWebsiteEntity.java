@@ -9,6 +9,8 @@ abstract public class WeatherWebsiteEntity {
     public Integer humidity;
     public LocalDateTime time;
 
+    public String weatherSource;
+
 
     public WeatherWebsiteEntity() {
     }
@@ -42,5 +44,14 @@ abstract public class WeatherWebsiteEntity {
 
     public void setTime(LocalDateTime time) {
         this.time = time;
+    }
+
+
+    public String getWeatherSource() {
+        return weatherSource;
+    }
+
+    public void setWeatherSource(String weatherSource) {
+        this.weatherSource = weatherSource;
     }
 }

@@ -15,7 +15,7 @@ public class MetEntity extends WeatherWebsiteEntity {
         metClient = new MetClient();
         temperature = getTemperatureByTime(hour);
         humidity = getHumidityByTime(hour);
-        time = getTime(hour);
+        time = getTimeByMet(hour);
         weatherSource = "MET";
     }
 
@@ -29,7 +29,7 @@ public class MetEntity extends WeatherWebsiteEntity {
         return metClient.metWeatherWebservice.getProperties().getTimeseries().get(hour+3).getData().getInstant().getDetails().getRelativeHumidity().intValue();
     }
 
-    public LocalDateTime getTime(int hour){
+    public LocalDateTime getTimeByMet(int hour){
         return LocalDateTime.parse(metClient.metWeatherWebservice.getProperties().getTimeseries().get(hour+3).getTime(), DateTimeFormatter.ISO_DATE_TIME);
     }
 

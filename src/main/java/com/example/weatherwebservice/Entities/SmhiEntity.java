@@ -17,12 +17,12 @@ public class SmhiEntity extends WeatherWebsiteEntity {
         smhiClient = new SmhiClient();
         temperature = getTemperatureByTime(hour);
         humidity = getHumidityByTime(hour);
-        time = getTime(hour);
+        time = getTimeBySmhi(hour);
         weatherSource = "SMHI";
     }
 
 
-    public LocalDateTime getTime(int hour) {
+    public LocalDateTime getTimeBySmhi(int hour) {
 
         return LocalDateTime.parse(smhiClient.weatherWebservice.getTimeSeries().get(hour+1).getValidTime(), DateTimeFormatter.ISO_DATE_TIME);
     }

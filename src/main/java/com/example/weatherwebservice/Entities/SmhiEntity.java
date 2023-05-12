@@ -11,23 +11,25 @@ import java.time.format.DateTimeFormatter;
 public class SmhiEntity extends WeatherWebsiteEntity {
     SmhiClient smhiClient;
 
+
+
     public SmhiEntity() {
         smhiClient = new SmhiClient();
-        temperature = getNextDayTemperature();
-        humidity = getNextDayHumidity();
-        time = getNextDayTime();
+        temperature = getTemperatureByTime(hour);
+        humidity = getHumidityByTime(hour);
+        time = getTime(hour);
         weatherSource = "SMHI";
     }
 
 
-    public LocalDateTime modularTime(Integer hours) {
+    public LocalDateTime getTime(int hour) {
 
-        return LocalDateTime.parse(smhiClient.weatherWebservice.getTimeSeries().get(hours).getValidTime(), DateTimeFormatter.ISO_DATE_TIME);
+        return LocalDateTime.parse(smhiClient.weatherWebservice.getTimeSeries().get(hour+1).getValidTime(), DateTimeFormatter.ISO_DATE_TIME);
     }
 
-    public Integer getNextDayTemperature() {
+    public Integer getTemperatureByTime(int hour) {
         int temperature = 0;
-        for (Parameter p : smhiClient.weatherWebservice.getTimeSeries().get(25).getParameters()) {
+        for (Parameter p : smhiClient.weatherWebservice.getTimeSeries().get(hour+1).getParameters()) {
             if (p.getName().equals("t")) {
                 temperature = p.getValues().get(0);
             }
@@ -35,9 +37,9 @@ public class SmhiEntity extends WeatherWebsiteEntity {
         return temperature;
     }
 
-    public Integer getNextDayHumidity() {
+    public Integer getHumidityByTime(int hour) {
         int humidity = 0;
-        for (Parameter p : smhiClient.weatherWebservice.getTimeSeries().get(25).getParameters()) {
+        for (Parameter p : smhiClient.weatherWebservice.getTimeSeries().get(hour+1).getParameters()) {
             if (p.getName().equals("r")) {
                 humidity = p.getValues().get(0);
             }
@@ -45,8 +47,7 @@ public class SmhiEntity extends WeatherWebsiteEntity {
         return humidity;
     }
 
-    public LocalDateTime getNextDayTime() {
 
-        return LocalDateTime.parse(smhiClient.weatherWebservice.getTimeSeries().get(25).getValidTime(), DateTimeFormatter.ISO_DATE_TIME);
-    }
+
+
 }

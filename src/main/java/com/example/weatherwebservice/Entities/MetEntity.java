@@ -10,28 +10,27 @@ import java.time.format.DateTimeFormatter;
 public class MetEntity extends WeatherWebsiteEntity {
     MetClient metClient;
 
+
     public MetEntity() {
         metClient = new MetClient();
-        temperature = getNextDayTemperature();
-        humidity = getNextDayHumidity();
-        time = getNextDayTime();
+        temperature = getTemperatureByTime(hour);
+        humidity = getHumidityByTime(hour);
+        time = getTime(hour);
         weatherSource = "MET";
     }
 
 
-    public LocalDateTime modularTime(Integer hours) {
-        return LocalDateTime.parse(metClient.metWeatherWebservice.getProperties().getTimeseries().get(hours).getTime(), DateTimeFormatter.ISO_DATE_TIME);
+
+    public Integer getTemperatureByTime(int hour) {
+        return metClient.metWeatherWebservice.getProperties().getTimeseries().get(hour+3).getData().getInstant().getDetails().getAirTemperature().intValue();
     }
 
-    public Integer getNextDayTemperature() {
-        return metClient.metWeatherWebservice.getProperties().getTimeseries().get(27).getData().getInstant().getDetails().getAirTemperature().intValue();
+    public Integer getHumidityByTime(int hour) {
+        return metClient.metWeatherWebservice.getProperties().getTimeseries().get(hour+3).getData().getInstant().getDetails().getRelativeHumidity().intValue();
     }
 
-    public Integer getNextDayHumidity() {
-        return metClient.metWeatherWebservice.getProperties().getTimeseries().get(27).getData().getInstant().getDetails().getRelativeHumidity().intValue();
+    public LocalDateTime getTime(int hour){
+        return LocalDateTime.parse(metClient.metWeatherWebservice.getProperties().getTimeseries().get(hour+3).getTime(), DateTimeFormatter.ISO_DATE_TIME);
     }
 
-    public LocalDateTime getNextDayTime() {
-        return LocalDateTime.parse(metClient.metWeatherWebservice.getProperties().getTimeseries().get(27).getTime(), DateTimeFormatter.ISO_DATE_TIME);
-    }
 }

@@ -1,13 +1,16 @@
 package com.example.weatherwebservice.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.time.LocalDateTime;
 
 abstract public class WeatherWebsiteEntity {
     public Integer temperature;
     public Integer humidity;
     public LocalDateTime time;
-
     public String weatherSource;
+    @JsonIgnore
+    int hour;
 
 
     public WeatherWebsiteEntity() {
@@ -51,5 +54,8 @@ abstract public class WeatherWebsiteEntity {
 
     public void setWeatherSource(String weatherSource) {
         this.weatherSource = weatherSource;
+    }
+    public void setHour(int hour){
+        this.hour = hour;
     }
 }

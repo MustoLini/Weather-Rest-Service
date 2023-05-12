@@ -1,62 +1,137 @@
 {
-  "type": "Feature",
-  "geometry": {
-    "type": "Point",
-    "coordinates": [
-      18.03,
-      59.311,
-      24
-    ]
+  "location": {
+    "name": "Stockholm",
+    "region": "Stockholms Lan",
+    "country": "Sweden",
+    "lat": 59.33,
+    "lon": 18.05,
+    "tz_id": "Europe/Stockholm",
+    "localtime_epoch": 1683882752,
+    "localtime": "2023-05-12 11:12"
   },
-  "properties": {
-    "meta": {
-      "updated_at": "2023-05-10T08:41:26Z",
-      "units": {
-        "air_pressure_at_sea_level": "hPa",
-        "air_temperature": "celsius",
-        "cloud_area_fraction": "%",
-        "precipitation_amount": "mm",
-        "relative_humidity": "%",
-        "wind_from_direction": "degrees",
-        "wind_speed": "m/s"
-      }
+  "current": {
+    "last_updated_epoch": 1683882000,
+    "last_updated": "2023-05-12 11:00",
+    "temp_c": 18.0,
+    "temp_f": 64.4,
+    "is_day": 1,
+    "condition": {
+      "text": "Sunny",
+      "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+      "code": 1000
     },
-    "timeseries": [
+    "wind_mph": 10.5,
+    "wind_kph": 16.9,
+    "wind_degree": 230,
+    "wind_dir": "SW",
+    "pressure_mb": 1027.0,
+    "pressure_in": 30.33,
+    "precip_mm": 0.0,
+    "precip_in": 0.0,
+    "humidity": 28,
+    "cloud": 0,
+    "feelslike_c": 18.0,
+    "feelslike_f": 64.4,
+    "vis_km": 10.0,
+    "vis_miles": 6.0,
+    "uv": 5.0,
+    "gust_mph": 11.6,
+    "gust_kph": 18.7
+  },
+  "forecast": {
+    "forecastday": [
       {
-        "time": "2023-05-10T09:00:00Z",
-        "data": {
-          "instant": {
-            "details": {
-              "air_pressure_at_sea_level": 1021.6,
-              "air_temperature": 17.1,
-              "cloud_area_fraction": 39.9,
-              "relative_humidity": 37.0,
-              "wind_from_direction": 167.7,
-              "wind_speed": 4.0
-            }
+        "date": "2023-05-12",
+        "date_epoch": 1683849600,
+        "day": {
+          "maxtemp_c": 19.6,
+          "maxtemp_f": 67.3,
+          "mintemp_c": 6.5,
+          "mintemp_f": 43.7,
+          "avgtemp_c": 13.2,
+          "avgtemp_f": 55.8,
+          "maxwind_mph": 11.2,
+          "maxwind_kph": 18.0,
+          "totalprecip_mm": 0.0,
+          "totalprecip_in": 0.0,
+          "totalsnow_cm": 0.0,
+          "avgvis_km": 10.0,
+          "avgvis_miles": 6.0,
+          "avghumidity": 49.0,
+          "daily_will_it_rain": 0,
+          "daily_chance_of_rain": 0,
+          "daily_will_it_snow": 0,
+          "daily_chance_of_snow": 0,
+          "condition": {
+            "text": "Sunny",
+            "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+            "code": 1000
           },
-          "next_12_hours": {
-            "summary": {
-              "symbol_code": "fair_day"
-            }
-          },
-          "next_1_hours": {
-            "summary": {
-              "symbol_code": "partlycloudy_day"
+          "uv": 4.0
+        },
+        "astro": {
+          "sunrise": "04:22 AM",
+          "sunset": "09:08 PM",
+          "moonrise": "03:31 AM",
+          "moonset": "10:20 AM",
+          "moon_phase": "Last Quarter",
+          "moon_illumination": "57",
+          "is_moon_up": 0,
+          "is_sun_up": 0
+        },
+        "hour": [
+          {
+            "time_epoch": 1683842400,
+            "time": "2023-05-12 00:00",
+            "temp_c": 7.2,
+            "temp_f": 45.0,
+            "is_day": 0,
+            "condition": {
+              "text": "Clear",
+              "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
+              "code": 1000
             },
-            "details": {
-              "precipitation_amount": 0.0
-            }
+            "wind_mph": 6.3,
+            "wind_kph": 10.1,
+            "wind_degree": 193,
+            "wind_dir": "SSW",
+            "pressure_mb": 1026.0,
+            "pressure_in": 30.3,
+            "precip_mm": 0.0,
+            "precip_in": 0.0,
+            "humidity": 61,
+            "cloud": 5,
+            "feelslike_c": 5.3,
+            "feelslike_f": 41.5,
+            "windchill_c": 5.3,
+            "windchill_f": 41.5,
+            "heatindex_c": 7.2,
+            "heatindex_f": 45.0,
+            "dewpoint_c": 0.3,
+            "dewpoint_f": 32.5,
+            "will_it_rain": 0,
+            "chance_of_rain": 0,
+            "will_it_snow": 0,
+            "chance_of_snow": 0,
+            "vis_km": 10.0,
+            "vis_miles": 6.0,
+            "gust_mph": 13.2,
+            "gust_kph": 21.2,
+            "uv": 1.0
           },
-          "next_6_hours": {
-            "summary": {
-              "symbol_code": "fair_day"
-            },
-            "details": {
-              "precipitation_amount": 0.0
+          {
+            "time_epoch": 1683846000,
+            "time": "2023-05-12 01:00",
+            "temp_c": 7.0,
+            "temp_f": 44.6,
+            "is_day": 0,
+            "condition": {
+              "text": "Cloudy",
+              "icon": "//cdn.weatherapi.com/weather/64x64/night/119.png",
+              "code": 1006
             }
           }
-        }
+        ]
       }
     ]
   }

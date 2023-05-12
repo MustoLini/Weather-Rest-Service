@@ -16,11 +16,11 @@ public class WeatherWebsiteEntityTest {
 
     @Test
     void checkingIfTimeIsModularInSmhi(){
-        assertEquals(smhiEntity.modularTime(2).getHour(), LocalDateTime.now().getHour()+1);
+        assertEquals(smhiEntity.getTime(2).getHour(), LocalDateTime.now().getHour()+1);
     }
     @Test
     void checkingIfTimeIsModularInMet(){
-        assertEquals(metEntity.modularTime(4).getHour(),LocalDateTime.now().getHour()+2);
+        assertEquals(metEntity.getTime(3).getHour(),LocalDateTime.now().getHour()+2);
     }
 
 }

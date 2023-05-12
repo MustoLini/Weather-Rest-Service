@@ -8,10 +8,17 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class BestWeatherService {
-    @Autowired
+
     MetEntity metEntity;
-    @Autowired
+
+    public BestWeatherService(MetEntity metEntity, SmhiEntity smhiEntity) {
+        this.metEntity = metEntity;
+        this.smhiEntity = smhiEntity;
+    }
+
     SmhiEntity smhiEntity;
+
+
 
     String bestWeatherSource;
 

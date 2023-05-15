@@ -20,6 +20,7 @@ public class WeatherApiEntity extends WeatherWebsiteEntity {
     }
 
     public void updateInformation(){
+        findHours();
         temperature = getTemperatureByTime(hour);
         humidity = getHumidityByTime(hour);
         time = getTimeByWeatherApi(hour);
@@ -29,24 +30,21 @@ public class WeatherApiEntity extends WeatherWebsiteEntity {
         timeNow = LocalDateTime.now();
         currentHour = timeNow.getHour();
         day = 0;
-        while ((currentHour + hour) > 24) {
+        while ((currentHour + hour) >= 24) {
             day++;
-            hour = -24;
+            hour = hour - 24;
         }
     }
 
     private Integer getHumidityByTime(int hour) {
-        findHours();
-        return weatherAPIClient.weatherAPIService.getForecast().getForecastday().get(day).getHour().get(hour).getHumidity();
+        return weatherAPIClient.weatherAPIService.getForecast().getForecastday().get(day).getHour().get(currentHour+hour).getHumidity();
     }
 
     private Integer getTemperatureByTime(int hour) {
-        findHours();
         return weatherAPIClient.weatherAPIService.getForecast().getForecastday().get(day).getHour().get(currentHour + hour).getTempC().intValue();
     }
 
     public LocalDateTime getTimeByWeatherApi(int hour) {
-        findHours();
         return LocalDateTime.parse(weatherAPIClient.weatherAPIService.getForecast().getForecastday().get(day).getHour().get(currentHour + hour).getTime(), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
     }
 }

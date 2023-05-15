@@ -24,8 +24,11 @@ public class BestWeatherService {
 
     public WeatherWebsiteEntity getTheBestWeather(int i) {
         weatherApiEntity.setHour(i);
+        weatherApiEntity.updateInformation();
         metEntity.setHour(i);
+        metEntity.updateInformation();
         smhiEntity.setHour(i);
+        smhiEntity.updateInformation();
         if (metEntity.getTemperature() > smhiEntity.getTemperature()) {
             bestWeatherSource = "Met";
             return metEntity;

@@ -15,10 +15,14 @@ public class WeatherApiEntity extends WeatherWebsiteEntity {
 
     public WeatherApiEntity() {
         weatherAPIClient = new WeatherAPIClient();
+        weatherSource = "WeatherAPI";
+        updateInformation();
+    }
+
+    public void updateInformation(){
         temperature = getTemperatureByTime(hour);
         humidity = getHumidityByTime(hour);
         time = getTimeByWeatherApi(hour);
-        weatherSource = "WeatherAPI";
     }
 
     void findHours() {

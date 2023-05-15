@@ -13,10 +13,14 @@ public class MetEntity extends WeatherWebsiteEntity {
 
     public MetEntity() {
         metClient = new MetClient();
+        weatherSource = "MET";
+        updateInformation();
+    }
+
+    public void updateInformation(){
         temperature = getTemperatureByTime(hour);
         humidity = getHumidityByTime(hour);
         time = getTimeByMet(hour);
-        weatherSource = "MET";
     }
 
 

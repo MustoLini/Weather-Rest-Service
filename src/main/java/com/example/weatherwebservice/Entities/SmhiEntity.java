@@ -14,11 +14,18 @@ public class SmhiEntity extends WeatherWebsiteEntity {
 
     public SmhiEntity() {
         smhiClient = new SmhiClient();
+        weatherSource = "SMHI";
+        updateInformation();
+
+    }
+
+    public void updateInformation(){
         temperature = getTemperatureByTime(hour);
         humidity = getHumidityByTime(hour);
         time = getTimeBySmhi(hour);
-        weatherSource = "SMHI";
+
     }
+
 
 
     public LocalDateTime getTimeBySmhi(int hour) {

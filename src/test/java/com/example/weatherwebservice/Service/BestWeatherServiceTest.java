@@ -26,7 +26,7 @@ class BestWeatherServiceTest {
         when(smhiEntity.getTemperature()).thenReturn(20);
         when(weatherApiEntity.getTemperature()).thenReturn(2);
         BestWeatherService bestWeatherService = new BestWeatherService(metEntity,smhiEntity,weatherApiEntity);
-        WeatherWebsiteEntity weather = bestWeatherService.getTheBestWeather();
+        WeatherWebsiteEntity weather = bestWeatherService.getTheBestWeather(2);
         assertEquals(20,weather.getTemperature());
 
     }

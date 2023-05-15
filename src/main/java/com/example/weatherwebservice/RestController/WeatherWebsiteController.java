@@ -15,7 +15,7 @@ public class WeatherWebsiteController {
 
     @GetMapping("/rs/weather")
     public ResponseEntity<WeatherWebsiteEntity> getBestWeather(){
-        return ResponseEntity.ok().body(bestWeatherService.getTheBestWeather());
+        return ResponseEntity.ok().body(bestWeatherService.getTheBestWeather(2));
     }
 
 

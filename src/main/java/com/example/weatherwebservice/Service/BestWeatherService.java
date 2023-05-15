@@ -29,12 +29,15 @@ public class BestWeatherService {
         metEntity.updateInformation();
         smhiEntity.setHour(i);
         smhiEntity.updateInformation();
-        if (metEntity.getTemperature() > smhiEntity.getTemperature()) {
+        if (metEntity.getTemperature() > smhiEntity.getTemperature() && metEntity.getTemperature() > weatherApiEntity.getTemperature()) {
             bestWeatherSource = "Met";
             return metEntity;
-        } else {
+        } else if(smhiEntity.getTemperature() > weatherApiEntity.getTemperature()) {
             bestWeatherSource = "Smhi";
             return smhiEntity;
+        }
+        else{
+            return weatherApiEntity;
         }
     }
 

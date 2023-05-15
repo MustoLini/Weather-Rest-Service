@@ -9,17 +9,16 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
+
 @Component
 public class WeatherApiEntity extends WeatherWebsiteEntity{
     WeatherAPIClient weatherAPIClient;
     public WeatherApiEntity() {
         weatherAPIClient = new WeatherAPIClient();
         temperature = getTemperatureByTime(hour);
-        System.out.println(temperature);
         humidity = getHumidityByTime(hour);
-        System.out.println(humidity);
         time = getTimeByWeatherApi(hour);
-        System.out.println(time);
         weatherSource = "WeatherAPI";
     }
 
@@ -49,11 +48,11 @@ public class WeatherApiEntity extends WeatherWebsiteEntity{
         LocalDateTime timeNow = LocalDateTime.now();
         int currentHour = timeNow.getHour();
         int day = 0;
-        //day = (currentHour+hour)-24;
         while((currentHour+hour)>24){
             day++;
             hour=-24;
         }
 
-        return LocalDateTime.parse(weatherAPIClient.weatherAPIService.getForecast().getForecastday().get(day).getHour().get(hour).getTime());    }
+        return LocalDateTime.parse(weatherAPIClient.weatherAPIService.getForecast().getForecastday().get(day).getHour().get(currentHour+hour).getTime(),DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        }
 }

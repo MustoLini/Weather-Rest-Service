@@ -12,7 +12,6 @@ public class SmhiEntity extends WeatherWebsiteEntity {
     SmhiClient smhiClient;
 
 
-
     public SmhiEntity() {
         smhiClient = new SmhiClient();
         temperature = getTemperatureByTime(hour);
@@ -24,12 +23,12 @@ public class SmhiEntity extends WeatherWebsiteEntity {
 
     public LocalDateTime getTimeBySmhi(int hour) {
 
-        return LocalDateTime.parse(smhiClient.weatherWebservice.getTimeSeries().get(hour+1).getValidTime(), DateTimeFormatter.ISO_DATE_TIME);
+        return LocalDateTime.parse(smhiClient.weatherWebservice.getTimeSeries().get(checkTimeIsTheSame() + hour).getValidTime(), DateTimeFormatter.ISO_DATE_TIME);
     }
 
     public Integer getTemperatureByTime(int hour) {
         int temperature = 0;
-        for (Parameter p : smhiClient.weatherWebservice.getTimeSeries().get(hour+1).getParameters()) {
+        for (Parameter p : smhiClient.weatherWebservice.getTimeSeries().get(checkTimeIsTheSame() + hour).getParameters()) {
             if (p.getName().equals("t")) {
                 temperature = p.getValues().get(0);
             }
@@ -39,7 +38,7 @@ public class SmhiEntity extends WeatherWebsiteEntity {
 
     public Integer getHumidityByTime(int hour) {
         int humidity = 0;
-        for (Parameter p : smhiClient.weatherWebservice.getTimeSeries().get(hour+1).getParameters()) {
+        for (Parameter p : smhiClient.weatherWebservice.getTimeSeries().get(checkTimeIsTheSame() + hour).getParameters()) {
             if (p.getName().equals("r")) {
                 humidity = p.getValues().get(0);
             }
@@ -47,7 +46,19 @@ public class SmhiEntity extends WeatherWebsiteEntity {
         return humidity;
     }
 
-
+    private Integer checkTimeIsTheSame() {
+        Boolean isItCorrect = false;
+        int i = 0;
+        LocalDateTime localDateTime = LocalDateTime.parse(smhiClient.weatherWebservice.getTimeSeries().get(0).getValidTime(), DateTimeFormatter.ISO_DATE_TIME);
+        while (isItCorrect == false) {
+            if (localDateTime.getHour() + i != LocalDateTime.now().getHour()) {
+                i++;
+            } else {
+                isItCorrect = true;
+            }
+        }
+        return i;
+    }
 
 
 }

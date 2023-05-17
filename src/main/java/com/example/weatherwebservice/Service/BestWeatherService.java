@@ -37,6 +37,7 @@ public class BestWeatherService {
             return smhiEntity;
         }
         else{
+            bestWeatherSource = "WeatherAPI";
             return weatherApiEntity;
         }
     }
